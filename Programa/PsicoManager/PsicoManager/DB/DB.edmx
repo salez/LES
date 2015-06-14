@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agenda">
+          <Key>
+            <PropertyRef Name="AgendaId" />
+          </Key>
+          <Property Name="AgendaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacienteId" Type="int" Nullable="false" />
+          <Property Name="DataConsulta" Type="date" Nullable="false" />
+          <Property Name="Compareceu" Type="bit" Nullable="false" />
+          <Property Name="DataInclusao" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="Observacao" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Ajuda">
+          <Key>
+            <PropertyRef Name="AjudaId" />
+          </Key>
+          <Property Name="AjudaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pergunta" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Resposta" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="DataInclusao" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="DataAlteracao" Type="datetime2" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pacientes">
+          <Key>
+            <PropertyRef Name="PacienteId" />
+          </Key>
+          <Property Name="PacienteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DataNascimento" Type="date" Nullable="false" />
+          <Property Name="Sexo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="RG" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="CPF" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="UF" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Cidade" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bairro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataInclusao" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="DataAlteracao" Type="datetime2" Precision="0" />
+          <Property Name="Endereco" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Complemento" Type="varchar" MaxLength="50" />
+          <Property Name="Observacao" Type="varchar" MaxLength="500" />
+          <Property Name="Telefone1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefone2" Type="varchar" MaxLength="50" />
+          <Property Name="Ocupacao" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Anotacoes" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Pagamentos">
+          <Key>
+            <PropertyRef Name="PagamentoId" />
+          </Key>
+          <Property Name="PagamentoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacienteId" Type="int" Nullable="false" />
+          <Property Name="AgendaId" Type="int" />
+          <Property Name="Valor" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Pago" Type="bit" Nullable="false" />
+          <Property Name="DataPagamento" Type="date" Nullable="false" />
+          <Property Name="DataLimitePagamento" Type="date" Nullable="false" />
+          <Property Name="DataInclusao" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="Observacao" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nivel" Type="int" Nullable="false" />
+          <Property Name="DataInclusao" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="DataAlteracao" Type="datetime2" Precision="0" />
+          <Property Name="DataNascimento" Type="date" Nullable="false" />
+          <Property Name="Sexo" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="RG" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="CPF" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="UF" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Cidade" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Bairro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Endereco" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Numero" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Complemento" Type="varchar" MaxLength="50" />
+          <Property Name="Observacao" Type="varchar" MaxLength="500" />
+          <Property Name="Telefone1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefone2" Type="varchar" MaxLength="50" />
+          <Property Name="Ocupacao" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Agenda_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1" />
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagamentos_Agenda">
+          <End Role="Agenda" Type="Self.Agenda" Multiplicity="0..1" />
+          <End Role="Pagamentos" Type="Self.Pagamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agenda">
+              <PropertyRef Name="AgendaId" />
+            </Principal>
+            <Dependent Role="Pagamentos">
+              <PropertyRef Name="AgendaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagamentos_Pacientes">
+          <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1" />
+          <End Role="Pagamentos" Type="Self.Pagamentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="Pagamentos">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModelStoreContainer">
+          <EntitySet Name="Agenda" EntityType="Self.Agenda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ajuda" EntityType="Self.Ajuda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pacientes" EntityType="Self.Pacientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pagamentos" EntityType="Self.Pagamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Agenda_Pacientes" Association="Self.FK_Agenda_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Agenda" EntitySet="Agenda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamentos_Agenda" Association="Self.FK_Pagamentos_Agenda">
+            <End Role="Agenda" EntitySet="Agenda" />
+            <End Role="Pagamentos" EntitySet="Pagamentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamentos_Pacientes" Association="Self.FK_Pagamentos_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Pagamentos" EntitySet="Pagamentos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agenda">
+          <Key>
+            <PropertyRef Name="AgendaId" />
+          </Key>
+          <Property Name="AgendaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacienteId" Type="Int32" Nullable="false" />
+          <Property Name="DataConsulta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Compareceu" Type="Boolean" Nullable="false" />
+          <Property Name="DataInclusao" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_Agenda_Pacientes" FromRole="Agenda" ToRole="Pacientes" />
+          <Property Name="Observacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pagamentos" Relationship="DBModel.FK_Pagamentos_Agenda" FromRole="Agenda" ToRole="Pagamento" />
+        </EntityType>
+        <EntityType Name="Ajuda">
+          <Key>
+            <PropertyRef Name="AjudaId" />
+          </Key>
+          <Property Name="AjudaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pergunta" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Resposta" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataInclusao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataAlteracao" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="PacienteId" />
+          </Key>
+          <Property Name="PacienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RG" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CPF" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataInclusao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataAlteracao" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Agenda" Relationship="Self.FK_Agenda_Pacientes" FromRole="Pacientes" ToRole="Agenda" />
+          <NavigationProperty Name="Pagamentos" Relationship="Self.FK_Pagamentos_Pacientes" FromRole="Pacientes" ToRole="Pagamentos" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="UF" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Cidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bairro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Endereco" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Observacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ocupacao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Anotacoes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Pagamento">
+          <Key>
+            <PropertyRef Name="PagamentoId" />
+          </Key>
+          <Property Name="PagamentoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacienteId" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Pago" Type="Boolean" Nullable="false" />
+          <Property Name="DataPagamento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataLimitePagamento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataInclusao" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_Pagamentos_Pacientes" FromRole="Pagamentos" ToRole="Pacientes" />
+          <Property Name="AgendaId" Type="Int32" />
+          <NavigationProperty Name="Agendum" Relationship="DBModel.FK_Pagamentos_Agenda" FromRole="Pagamento" ToRole="Agenda" />
+          <Property Name="Observacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nivel" Type="Int32" Nullable="false" />
+          <Property Name="DataInclusao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataAlteracao" Type="DateTime" Precision="0" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="RG" Type="String" Nullable="false" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="CPF" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="UF" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Cidade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bairro" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Endereco" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Complemento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Observacao" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ocupacao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Agenda_Pacientes">
+          <End Role="Pacientes" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Agenda" Type="DBModel.Agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="Agenda">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pagamentos_Pacientes">
+          <End Role="Pacientes" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="Pagamentos" Type="Self.Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacientes">
+              <PropertyRef Name="PacienteId" />
+            </Principal>
+            <Dependent Role="Pagamentos">
+              <PropertyRef Name="PacienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agendas" EntityType="DBModel.Agenda" />
+          <EntitySet Name="Ajudas" EntityType="Self.Ajuda" />
+          <EntitySet Name="Pacientes" EntityType="Self.Paciente" />
+          <EntitySet Name="Pagamentos" EntityType="Self.Pagamento" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Agenda_Pacientes" Association="Self.FK_Agenda_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Agenda" EntitySet="Agendas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamentos_Pacientes" Association="Self.FK_Pagamentos_Pacientes">
+            <End Role="Pacientes" EntitySet="Pacientes" />
+            <End Role="Pagamentos" EntitySet="Pagamentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pagamentos_Agenda" Association="DBModel.FK_Pagamentos_Agenda">
+            <End Role="Agenda" EntitySet="Agendas" />
+            <End Role="Pagamento" EntitySet="Pagamentos" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Pagamentos_Agenda">
+          <End Type="DBModel.Agenda" Role="Agenda" Multiplicity="0..1" />
+          <End Type="DBModel.Pagamento" Role="Pagamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agenda">
+              <PropertyRef Name="AgendaId" />
+            </Principal>
+            <Dependent Role="Pagamento">
+              <PropertyRef Name="AgendaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBContext">
+          <EntitySetMapping Name="Agendas">
+            <EntityTypeMapping TypeName="DBModel.Agenda">
+              <MappingFragment StoreEntitySet="Agenda">
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+                <ScalarProperty Name="AgendaId" ColumnName="AgendaId" />
+                <ScalarProperty Name="PacienteId" ColumnName="PacienteId" />
+                <ScalarProperty Name="DataConsulta" ColumnName="DataConsulta" />
+                <ScalarProperty Name="Compareceu" ColumnName="Compareceu" />
+                <ScalarProperty Name="DataInclusao" ColumnName="DataInclusao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ajudas">
+            <EntityTypeMapping TypeName="DBModel.Ajuda">
+              <MappingFragment StoreEntitySet="Ajuda">
+                <ScalarProperty Name="AjudaId" ColumnName="AjudaId" />
+                <ScalarProperty Name="Pergunta" ColumnName="Pergunta" />
+                <ScalarProperty Name="Resposta" ColumnName="Resposta" />
+                <ScalarProperty Name="DataInclusao" ColumnName="DataInclusao" />
+                <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacientes">
+            <EntityTypeMapping TypeName="DBModel.Paciente">
+              <MappingFragment StoreEntitySet="Pacientes">
+                <ScalarProperty Name="Anotacoes" ColumnName="Anotacoes" />
+                <ScalarProperty Name="Ocupacao" ColumnName="Ocupacao" />
+                <ScalarProperty Name="Telefone2" ColumnName="Telefone2" />
+                <ScalarProperty Name="Telefone1" ColumnName="Telefone1" />
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="PacienteId" ColumnName="PacienteId" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="RG" ColumnName="RG" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="DataInclusao" ColumnName="DataInclusao" />
+                <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagamentos">
+            <EntityTypeMapping TypeName="DBModel.Pagamento">
+              <MappingFragment StoreEntitySet="Pagamentos">
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+                <ScalarProperty Name="AgendaId" ColumnName="AgendaId" />
+                <ScalarProperty Name="PagamentoId" ColumnName="PagamentoId" />
+                <ScalarProperty Name="PacienteId" ColumnName="PacienteId" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
+                <ScalarProperty Name="DataPagamento" ColumnName="DataPagamento" />
+                <ScalarProperty Name="DataLimitePagamento" ColumnName="DataLimitePagamento" />
+                <ScalarProperty Name="DataInclusao" ColumnName="DataInclusao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Ocupacao" ColumnName="Ocupacao" />
+                <ScalarProperty Name="Telefone2" ColumnName="Telefone2" />
+                <ScalarProperty Name="Telefone1" ColumnName="Telefone1" />
+                <ScalarProperty Name="Observacao" ColumnName="Observacao" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="RG" ColumnName="RG" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+                <ScalarProperty Name="DataInclusao" ColumnName="DataInclusao" />
+                <ScalarProperty Name="DataAlteracao" ColumnName="DataAlteracao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

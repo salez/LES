@@ -32,8 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SkinSoft.VisualStyler, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0fda9f423e1d9830, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,16 +55,171 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.Themes.Breeze, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2010Black, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="DB\Agenda.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Ajuda.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Paciente.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Pagamento.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Usuario.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FormBase.cs" />
+    <Compile Include="Paginas\Agenda\FrmAgenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Agenda\FrmAgenda.Designer.cs">
+      <DependentUpon>FrmAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Agenda\FrmAgendaNovo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Agenda\FrmAgendaNovo.Designer.cs">
+      <DependentUpon>FrmAgendaNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Ajuda\FrmAjuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Ajuda\FrmAjuda.Designer.cs">
+      <DependentUpon>FrmAjuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Ajuda\FrmAjudaNovo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Ajuda\FrmAjudaNovo.Designer.cs">
+      <DependentUpon>FrmAjudaNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Funcionarios\FrmFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Funcionarios\FrmFuncionarios.Designer.cs">
+      <DependentUpon>FrmFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Funcionarios\FrmFuncionariosNovo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Funcionarios\FrmFuncionariosNovo.Designer.cs">
+      <DependentUpon>FrmFuncionariosNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pacientes\FrmPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Pacientes\FrmPacientes.Designer.cs">
+      <DependentUpon>FrmPacientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pacientes\FrmPacientesAcompanhamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Pacientes\FrmPacientesAcompanhamento.Designer.cs">
+      <DependentUpon>FrmPacientesAcompanhamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pacientes\FrmPacientesNovo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Pacientes\FrmPacientesNovo.Designer.cs">
+      <DependentUpon>FrmPacientesNovo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pagamentos\FrmPagamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Pagamentos\FrmPagamentos.Designer.cs">
+      <DependentUpon>FrmPagamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paginas\Pagamentos\FrmPagamentosNovo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paginas\Pagamentos\FrmPagamentosNovo.Designer.cs">
+      <DependentUpon>FrmPagamentosNovo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Agenda\FrmAgenda.resx">
+      <DependentUpon>FrmAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Agenda\FrmAgendaNovo.resx">
+      <DependentUpon>FrmAgendaNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Ajuda\FrmAjuda.resx">
+      <DependentUpon>FrmAjuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Ajuda\FrmAjudaNovo.resx">
+      <DependentUpon>FrmAjudaNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Funcionarios\FrmFuncionarios.resx">
+      <DependentUpon>FrmFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Funcionarios\FrmFuncionariosNovo.resx">
+      <DependentUpon>FrmFuncionariosNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Pacientes\FrmPacientes.resx">
+      <DependentUpon>FrmPacientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Pacientes\FrmPacientesAcompanhamento.resx">
+      <DependentUpon>FrmPacientesAcompanhamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Pacientes\FrmPacientesNovo.resx">
+      <DependentUpon>FrmPacientesNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Pagamentos\FrmPagamentos.resx">
+      <DependentUpon>FrmPagamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paginas\Pagamentos\FrmPagamentosNovo.resx">
+      <DependentUpon>FrmPagamentosNovo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,6 +229,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="DB\DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DB\DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DB\DB.edmx.diagram">
+      <DependentUpon>DB.edmx</DependentUpon>
+    </None>
+    <None Include="DB\DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.cs</LastGenOutput>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -73,6 +260,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
