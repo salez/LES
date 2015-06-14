@@ -380,7 +380,7 @@
             // txtTel2
             // 
             this.txtTel2.Location = new System.Drawing.Point(559, 94);
-            this.txtTel2.MaxLength = 50;
+            this.txtTel2.MaxLength = 11;
             this.txtTel2.Name = "txtTel2";
             this.txtTel2.Size = new System.Drawing.Size(168, 20);
             this.txtTel2.TabIndex = 32;
@@ -388,7 +388,7 @@
             // txtTel1
             // 
             this.txtTel1.Location = new System.Drawing.Point(385, 94);
-            this.txtTel1.MaxLength = 50;
+            this.txtTel1.MaxLength = 11;
             this.txtTel1.Name = "txtTel1";
             this.txtTel1.Size = new System.Drawing.Size(168, 20);
             this.txtTel1.TabIndex = 30;

@@ -46,6 +46,9 @@ namespace PsicoManager
             txtComplemento.Text = paciente.Complemento;
             txtObservacao.Text = paciente.Observacao;
             dpDataNasc.Value = (paciente.DataNascimento < dpDataNasc.MinDate)?dpDataNasc.MinDate : paciente.DataNascimento;
+            txtTel1.Text = paciente.Telefone1;
+            txtTel2.Text = paciente.Telefone2;
+            txtOcupacao.Text = paciente.Ocupacao;
         }
         private void lblVoltar_Click(object sender, EventArgs e)
         {
@@ -75,6 +78,9 @@ namespace PsicoManager
             paciente.Complemento = txtComplemento.Text;
             paciente.Observacao = txtObservacao.Text;
             paciente.DataNascimento = dpDataNasc.Value;
+            paciente.Telefone1 = txtTel1.Text;
+            paciente.Telefone2 = txtTel2.Text;
+            paciente.Ocupacao = txtOcupacao.Text;
 
             paciente.DataInclusao = DateTime.Now;
 

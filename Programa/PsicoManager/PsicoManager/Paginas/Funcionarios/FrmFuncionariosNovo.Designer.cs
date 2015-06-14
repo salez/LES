@@ -55,23 +55,23 @@
             this.txtObservacao = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cboNivelAcesso = new System.Windows.Forms.ComboBox();
+            this.txtTel2 = new System.Windows.Forms.TextBox();
+            this.txtTel1 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.txtRG = new System.Windows.Forms.MaskedTextBox();
             this.txtCpf = new System.Windows.Forms.MaskedTextBox();
             this.dpDataNasc = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboNivelAcesso = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtTel1 = new System.Windows.Forms.TextBox();
-            this.txtTel2 = new System.Windows.Forms.TextBox();
             this.txtOcupacao = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -376,32 +376,43 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Pessoal";
             // 
-            // label6
+            // txtTel2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label6.Location = new System.Drawing.Point(14, 185);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(136, 20);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Nível de Acesso";
+            this.txtTel2.Location = new System.Drawing.Point(558, 94);
+            this.txtTel2.MaxLength = 11;
+            this.txtTel2.Name = "txtTel2";
+            this.txtTel2.Size = new System.Drawing.Size(206, 20);
+            this.txtTel2.TabIndex = 28;
             // 
-            // cboNivelAcesso
+            // txtTel1
             // 
-            this.cboNivelAcesso.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cboNivelAcesso.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboNivelAcesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboNivelAcesso.FormattingEnabled = true;
-            this.cboNivelAcesso.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.cboNivelAcesso.Items.AddRange(new object[] {
-            "Administrador",
-            "Funcionário"});
-            this.cboNivelAcesso.Location = new System.Drawing.Point(18, 208);
-            this.cboNivelAcesso.MaxLength = 1;
-            this.cboNivelAcesso.Name = "cboNivelAcesso";
-            this.cboNivelAcesso.Size = new System.Drawing.Size(166, 21);
-            this.cboNivelAcesso.TabIndex = 25;
+            this.txtTel1.Location = new System.Drawing.Point(377, 94);
+            this.txtTel1.MaxLength = 11;
+            this.txtTel1.Name = "txtTel1";
+            this.txtTel1.Size = new System.Drawing.Size(168, 20);
+            this.txtTel1.TabIndex = 27;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label16.Location = new System.Drawing.Point(554, 71);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(94, 20);
+            this.label16.TabIndex = 27;
+            this.label16.Text = "Telefone 2";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label15.Location = new System.Drawing.Point(373, 71);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(94, 20);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "Telefone 1";
             // 
             // txtRG
             // 
@@ -429,6 +440,33 @@
             this.dpDataNasc.Size = new System.Drawing.Size(161, 20);
             this.dpDataNasc.TabIndex = 21;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label6.Location = new System.Drawing.Point(14, 185);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(136, 20);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Nível de Acesso";
+            // 
+            // cboNivelAcesso
+            // 
+            this.cboNivelAcesso.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cboNivelAcesso.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboNivelAcesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboNivelAcesso.FormattingEnabled = true;
+            this.cboNivelAcesso.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.cboNivelAcesso.Items.AddRange(new object[] {
+            "Administrador",
+            "Funcionário"});
+            this.cboNivelAcesso.Location = new System.Drawing.Point(18, 208);
+            this.cboNivelAcesso.MaxLength = 1;
+            this.cboNivelAcesso.Name = "cboNivelAcesso";
+            this.cboNivelAcesso.Size = new System.Drawing.Size(166, 21);
+            this.cboNivelAcesso.TabIndex = 25;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.txtCidade);
@@ -449,44 +487,6 @@
             this.groupBox3.TabIndex = 31;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Endereço";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label15.Location = new System.Drawing.Point(373, 71);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(94, 20);
-            this.label15.TabIndex = 26;
-            this.label15.Text = "Telefone 1";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label16.Location = new System.Drawing.Point(554, 71);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(94, 20);
-            this.label16.TabIndex = 27;
-            this.label16.Text = "Telefone 2";
-            // 
-            // txtTel1
-            // 
-            this.txtTel1.Location = new System.Drawing.Point(377, 94);
-            this.txtTel1.MaxLength = 50;
-            this.txtTel1.Name = "txtTel1";
-            this.txtTel1.Size = new System.Drawing.Size(168, 20);
-            this.txtTel1.TabIndex = 27;
-            // 
-            // txtTel2
-            // 
-            this.txtTel2.Location = new System.Drawing.Point(558, 94);
-            this.txtTel2.MaxLength = 50;
-            this.txtTel2.Name = "txtTel2";
-            this.txtTel2.Size = new System.Drawing.Size(206, 20);
-            this.txtTel2.TabIndex = 28;
             // 
             // txtOcupacao
             // 
@@ -524,25 +524,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Empresa / Sistema";
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(18, 91);
-            this.txtEmail.MaxLength = 50;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(234, 20);
-            this.txtEmail.TabIndex = 37;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label18.Location = new System.Drawing.Point(16, 68);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(53, 20);
-            this.label18.TabIndex = 36;
-            this.label18.Text = "Email";
-            // 
             // txtSenha
             // 
             this.txtSenha.Location = new System.Drawing.Point(18, 149);
@@ -562,6 +543,25 @@
             this.label19.Size = new System.Drawing.Size(61, 20);
             this.label19.TabIndex = 38;
             this.label19.Text = "Senha";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(18, 91);
+            this.txtEmail.MaxLength = 50;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(234, 20);
+            this.txtEmail.TabIndex = 37;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.label18.Location = new System.Drawing.Point(16, 68);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 20);
+            this.label18.TabIndex = 36;
+            this.label18.Text = "Email";
             // 
             // FrmFuncionariosNovo
             // 

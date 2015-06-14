@@ -24,12 +24,16 @@ namespace PsicoManager
         {
             CarregaPacientes();
 
-            DataGridViewButtonColumn colAcompanharPaciente = new DataGridViewButtonColumn();
-            colAcompanharPaciente.UseColumnTextForButtonValue = true;
-            colAcompanharPaciente.Text = "Acompanhar Paciente";
-            colAcompanharPaciente.Name = "Acompanhar Paciente";
-            colAcompanharPaciente.HeaderText = "";
-            gridPacientes.Columns.Add(colAcompanharPaciente);
+            if (FormBase.nivelUsuario == 1)
+            {
+                DataGridViewButtonColumn colAcompanharPaciente = new DataGridViewButtonColumn();
+                colAcompanharPaciente.UseColumnTextForButtonValue = true;
+                colAcompanharPaciente.Text = "Acompanhar Paciente";
+                colAcompanharPaciente.Name = "Acompanhar Paciente";
+                colAcompanharPaciente.HeaderText = "";
+                colAcompanharPaciente.Width = 128;
+                gridPacientes.Columns.Add(colAcompanharPaciente);
+            }
 
             DataGridViewButtonColumn col = new DataGridViewButtonColumn();
             col.UseColumnTextForButtonValue = true;
@@ -62,7 +66,7 @@ namespace PsicoManager
 
         private void gridPacientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0)
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
             var acao = gridPacientes.Columns[e.ColumnIndex].Name;
             int idPaciente = (int)gridPacientes.Rows[e.RowIndex].Cells["Codigo"].Value;

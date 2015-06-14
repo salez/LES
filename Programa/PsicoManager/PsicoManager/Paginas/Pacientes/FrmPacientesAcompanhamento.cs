@@ -39,6 +39,7 @@ namespace PsicoManager
             txtTel1.Text = paciente.Telefone1;
             txtTel2.Text = paciente.Telefone2;
             txtAnotacoes.Text = paciente.Anotacoes;
+            txtOcupacao.Text = paciente.Ocupacao;
             dpDataNasc.Value = (paciente.DataNascimento < dpDataNasc.MinDate)?dpDataNasc.MinDate : paciente.DataNascimento;
 
             gridProximasConsultas.DataSource = paciente.Agenda.Select(x => new { x.DataConsulta, x.DataInclusao, x.Observacao }).ToList();

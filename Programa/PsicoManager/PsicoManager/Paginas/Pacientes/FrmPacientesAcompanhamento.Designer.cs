@@ -219,6 +219,7 @@
             // 
             // dpDataNasc
             // 
+            this.dpDataNasc.Enabled = false;
             this.dpDataNasc.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dpDataNasc.Location = new System.Drawing.Point(677, 14);
             this.dpDataNasc.Name = "dpDataNasc";

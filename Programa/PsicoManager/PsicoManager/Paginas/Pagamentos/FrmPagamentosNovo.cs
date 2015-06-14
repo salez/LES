@@ -53,9 +53,9 @@ namespace PsicoManager
         }
         private void lblVoltar_Click(object sender, EventArgs e)
         {
-            FrmPacientes frmPacientes = new FrmPacientes();
+            var frm = new FrmPagamentos();
 
-            FormBase.AbrirForm(frmPacientes);
+            FormBase.AbrirForm(frm);
         }
 
         private void lblSalvar_Click(object sender, EventArgs e)

@@ -61,7 +61,7 @@ namespace PsicoManager
 
         private void CarregaDados()
         {
-            var pagamentos = db.Pagamentos.Where(x => x.DataPagamento > dpDataInicial.Value && x.DataPagamento < dpDataFinal.Value);
+            var pagamentos = db.Pagamentos.Where(x => x.DataPagamento >= dpDataInicial.Value && x.DataPagamento <= dpDataFinal.Value);
 
             gridPagamentos.DataSource = pagamentos.Select(x => new { Codigo = x.PagamentoId, Paciente = x.Paciente.Nome, Valor = x.Valor, Pago = x.Pago, DataPagamento = x.DataPagamento }).ToList()
                 .Select(x => new { Codigo = x.Codigo, Paciente = x.Paciente, Valor = x.Valor, Pago = x.Pago, DataPagamento = (x.Pago) ? x.DataPagamento.ToString() : "-" }).ToList();
@@ -79,7 +79,7 @@ namespace PsicoManager
 
         private void gridPacientes_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0)
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
                 return;
             var acao = gridPagamentos.Columns[e.ColumnIndex].Name;
             int idPgto = (int)gridPagamentos.Rows[e.RowIndex].Cells["Codigo"].Value;
@@ -88,7 +88,7 @@ namespace PsicoManager
             {
                 case "Editar":
 
-                    FrmPacientesNovo frm = new FrmPacientesNovo(idPgto);
+                    var frm = new FrmPagamentosNovo(idPgto);
                     // button clicked - do some logic
                     FormBase.AbrirForm(frm);
 

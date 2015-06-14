@@ -68,6 +68,7 @@
             this.lblNovo.TabIndex = 12;
             this.lblNovo.Text = "Novo";
             this.lblNovo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNovo.Visible = false;
             this.lblNovo.Click += new System.EventHandler(this.lblNovo_Click);
             // 
             // pnlPerguntas
